@@ -15,7 +15,18 @@ export function formatFileSize(bytes: number): string {
   return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + " " + sizes[i];
 }
 
-export function groupBySubject<T extends { id: string; subject?: string | null }>(items: T[]): Map<string, T[]> {
+export function groupBySubject<
+  T extends {
+    id: string;
+    title: string;
+    createdAt: string | Date;
+    subject?: string | null;
+    description?: string | null;
+    dueDate?: string | null;
+    fileUrl?: string | null;
+    fileName?: string | null;
+  }
+>(items: T[]): Map<string, T[]> {
   const map = new Map<string, T[]>();
   for (const item of items) {
     const subject = item.subject || "General";
