@@ -1,10 +1,11 @@
 import { prisma } from "@/lib/prisma";
 import { formatDate } from "@/lib/utils";
+import type { Notice } from "@prisma/client";
 
 export const dynamic = "force-dynamic";
 
 export default async function NoticesPage() {
-  const notices = await prisma.notice.findMany({
+  const notices: Notice[] = await prisma.notice.findMany({
     orderBy: { createdAt: "desc" },
   });
 
