@@ -15,7 +15,7 @@ export function formatFileSize(bytes: number): string {
   return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + " " + sizes[i];
 }
 
-export function groupBySubject<T extends { subject?: string | null }>(items: T[]): Map<string, T[]> {
+export function groupBySubject<T extends { id: string; subject?: string | null }>(items: T[]): Map<string, T[]> {
   const map = new Map<string, T[]>();
   for (const item of items) {
     const subject = item.subject || "General";
