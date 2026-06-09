@@ -1,8 +1,15 @@
 import { prisma } from "@/lib/prisma";
 import { formatDate } from "@/lib/utils";
-import type { Notice } from "@prisma/client";
 
 export const dynamic = "force-dynamic";
+
+interface Notice {
+  id: string;
+  title: string;
+  content: string;
+  date: string | null;
+  createdAt: string | Date;
+}
 
 export default async function NoticesPage() {
   const notices: Notice[] = await prisma.notice.findMany({
